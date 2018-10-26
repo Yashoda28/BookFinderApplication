@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+<LinearLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".AddBooksActivity">
+
+     <!--<ImageView
+         android:id="@+id/imageView2"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:contentDescription="@string/imageView2"
+         app:srcCompat="?android:attr/textColorHighlight" />
+
+     <Button
+         android:id="@+id/btnUploadImageOnAddBooks"
+         android:layout_alignParentEnd="true"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginBottom="10dp"
+         android:text="@string/btnUploadImageOnAddBooks"
+         android:layout_marginLeft="10dp"
+         android:layout_marginRight="10dp"
+         />-->
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="match_parent"
+            android:layout_height="210dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="46dp" />
+
+        <Button
+            android:id="@+id/btnUploadImageOnAddBooks"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_below="@+id/imageView2"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="42dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:text="@string/btnUploadImageOnAddBooks" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/txtAddBookTitle"
+            android:layout_width="162dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_alignParentStart="true"
+            android:paddingLeft="10dp"
+            android:layout_alignParentTop="true"
+            android:singleLine="true"
+            android:text="Title:"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+        <EditText
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/txtAddBookTitle"
+            android:textSize="20sp"
+            android:id="@+id/etAddBookTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="20dp"
+            android:inputType="text"
+            android:singleLine="true"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/txtAddBookAuthor"
+            android:layout_width="162dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_alignParentStart="true"
+            android:paddingLeft="10dp"
+            android:layout_alignParentTop="true"
+            android:singleLine="true"
+            android:text="Author:"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+        <EditText
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/txtAddBookAuthor"
+            android:textSize="20sp"
+            android:id="@+id/etAddBookAuthor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="20dp"
+            android:inputType="text"
+            android:singleLine="true"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/txtAddBookSummary"
+            android:layout_width="162dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_alignParentStart="true"
+            android:paddingLeft="10dp"
+            android:layout_alignParentTop="true"
+            android:singleLine="true"
+            android:text="Summary:"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+        <EditText
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/txtAddBookSummary"
+            android:textSize="20sp"
+            android:id="@+id/etAddBookSummary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="20dp"
+            android:inputType="text"
+            android:singleLine="true"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/txtAddBookPrice"
+            android:layout_width="162dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_alignParentStart="true"
+            android:paddingLeft="10dp"
+            android:layout_alignParentTop="true"
+            android:singleLine="true"
+            android:text="Price:"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+        <EditText
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/txtAddBookPrice"
+            android:textSize="20sp"
+            android:id="@+id/etAddBookPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="20dp"
+            android:inputType="text"
+            android:singleLine="true"/>
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btnSaveOnAddBooks"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="Save"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp" />
+
+</LinearLayout>
+</ScrollView>

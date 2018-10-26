@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+<LinearLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".UpdatingActivity">
+
+    <TextView
+        android:id="@+id/txtUpdateDetailsOnUpdating"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_alignParentStart="true"
+        android:paddingLeft="10dp"
+        android:layout_alignParentTop="true"
+        android:singleLine="true"
+        android:text="UPDATE DETAILS:"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/imageViewOnUpdating"
+            android:layout_width="match_parent"
+            android:layout_height="210dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="46dp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/txtUpdateBookTitle"
+            android:layout_width="162dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_alignParentStart="true"
+            android:paddingLeft="10dp"
+            android:layout_alignParentTop="true"
+            android:singleLine="true"
+            android:text="Title:"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+        <EditText
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/txtUpdateBookTitle"
+            android:textSize="20sp"
+            android:id="@+id/etUpdateBookTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="20dp"
+            android:inputType="text"
+            android:singleLine="true"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/txtUpdateBookAuthor"
+            android:layout_width="162dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_alignParentStart="true"
+            android:paddingLeft="10dp"
+            android:layout_alignParentTop="true"
+            android:singleLine="true"
+            android:text="Author:"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+        <EditText
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/txtUpdateBookAuthor"
+            android:textSize="20sp"
+            android:id="@+id/etUpdateBookAuthor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="20dp"
+            android:inputType="text"
+            android:singleLine="true"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/txtUpdateBookSummary"
+            android:layout_width="162dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_alignParentStart="true"
+            android:paddingLeft="10dp"
+            android:layout_alignParentTop="true"
+            android:singleLine="true"
+            android:text="Summary:"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+        <EditText
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/txtUpdateBookSummary"
+            android:textSize="20sp"
+            android:id="@+id/etUpdateBookSummary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="20dp"
+            android:inputType="text"
+            android:singleLine="true"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/txtUpdateBookPrice"
+            android:layout_width="162dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_alignParentStart="true"
+            android:paddingLeft="10dp"
+            android:layout_alignParentTop="true"
+            android:singleLine="true"
+            android:text="Price:"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+        <EditText
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/txtUpdateBookPrice"
+            android:textSize="20sp"
+            android:id="@+id/etUpdateBookPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="20dp"
+            android:inputType="text"
+            android:singleLine="true"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/txtUpdatingStatus"
+            android:layout_width="162dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_alignParentStart="true"
+            android:paddingLeft="10dp"
+            android:layout_alignParentTop="true"
+            android:singleLine="true"
+            android:text="Status"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:id="@+id/radiogroupUpdating"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/txtUpdatingStatus"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="25dp"
+            android:orientation="vertical">
+            <RadioButton
+                android:id="@+id/radio_availableUpdating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="available" />
+            <RadioButton
+                android:id="@+id/radio_unavailableUpdating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="unavailable"/>
+        </RadioGroup>
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btnUpdateOnUpdateBooks"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="Save"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp" />
+
+</LinearLayout>
+</ScrollView>

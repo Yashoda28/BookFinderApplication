@@ -1,0 +1,69 @@
+<resources>
+    <string name="app_name">BookFinderApplication</string>
+
+    <!--LogIn-->
+    <string name="btnLoginOnLogIn">Login</string>
+    <string name="btnRegisterOnLogIn">Register</string>
+
+    <!--Register-->
+    <string name="txtDetails">Enter your Details</string>
+    <string name="txtRegisterName">Name:</string>
+    <string name="txtRegisterSurname">Surname:</string>
+    <string name="txtRegisterEmailAddress">Email Address:</string>
+    <string name="txtRegisterPassword">Password:</string>
+    <string name="txtRegisterCellNumber">Cell Number:</string>
+    <string name="spinnerRegisterCampusName">Campus Name:</string>
+    <string name="btnRegisterOnRegister">Register</string>
+
+    <!--Add Books-->
+    <string name="imageView2">Upload an image</string>
+    <string name="btnUploadImageOnAddBooks">Upload image</string>
+    <string name="txtAddBookTitle">Title:</string>
+    <string name="txtAddBookAuthor">Author:</string>
+    <string name="txtAddBookSummary">Summary:</string>
+    <string name="txtAddBookPrice">Price:</string>
+    <string name="btnSaveOnAddBooks">Save</string>
+
+    <!--Viewing-->
+    <string name="btnAddBookOnViewing">Add New Book</string>
+    <string name="btnSearchOnViewing">Search</string>
+    <string name="pictureListView"> </string>
+    <string name="btnViewHistoryOnViewing">View History of Advertised Books</string>
+
+    <!--View History-->
+    <string name="imageViewOnViewHistory"> </string>
+
+    <!--Viewing2-->
+    <string name="imageViewOnViewing2"> </string>
+    <string name="txtViewing2Title">Title:</string>
+    <string name="etViewing2Title"> </string>
+    <string name="txtViewing2Author">Author:</string>
+    <string name="etViewing2Author"> </string>
+    <string name="txtViewing2Summary">Summary:</string>
+    <string name="etViewing2Summary"> </string>
+    <string name="txtViewing2Price">Price:</string>
+    <string name="etViewing2Price"> </string>
+    <string name="btnBackOnViewing2">Back</string>
+    <string name="btnUpdateOnViewing2">Update</string>
+    <string name="radio_available">available</string>
+    <string name="radio_unavailable">unavailable</string>
+    <string name="radiogroupViewing2"> </string>
+    <string name="btnInterestedOnViewing2">I want this book</string>
+
+    <!--custom_layout-->
+    <string name="imageViewCustom"> </string>
+    <string name="textViewCustom">TextView</string>
+
+    <!--Updating-->
+    <string name="txtUpdateDetailsOnUpdating">UPDATE DETAILS:</string>
+    <string name="imageViewOnUpdating"> </string>
+    <string name="txtUpdateBookTitle">Title:</string>
+    <string name="txtUpdateBookAuthor">Author:</string>
+    <string name="txtUpdateBookSummary">Summary:</string>
+    <string name="txtUpdateBookPrice">Price:</string>
+    <string name="btnUpdateOnUpdateBooks">Save</string>
+    <string name="radiogroupUpdating"> </string>
+    <string name="radio_unavailableUpdating">unavailable</string>
+    <string name="radio_availableUpdating">available</string>
+
+</resources>

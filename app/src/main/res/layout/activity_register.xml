@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".RegisterActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Enter your Details"
+        android:id="@+id/txtDetails"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/txtRegisterName"
+            android:layout_width="162dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_alignParentStart="true"
+            android:paddingLeft="10dp"
+            android:layout_alignParentTop="true"
+            android:singleLine="true"
+            android:text="Name:"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+        <EditText
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/txtRegisterName"
+            android:textSize="20sp"
+            android:id="@+id/etRegistserName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="20dp"
+            android:inputType="text"
+            android:singleLine="true"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/txtRegisterSurname"
+            android:layout_width="162dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="15dp"
+            android:paddingLeft="10dp"
+            android:singleLine="true"
+            android:text="Surname:"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+        <EditText
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/txtRegisterSurname"
+            android:textSize="20sp"
+            android:id="@+id/etRegisterSurname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:inputType="text"
+            android:singleLine="true"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/txtRegisterEmailAddress"
+            android:layout_width="162dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_alignParentStart="true"
+            android:paddingLeft="10dp"
+            android:layout_alignParentTop="true"
+            android:singleLine="true"
+            android:text="Email Address:"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+        <EditText
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/txtRegisterEmailAddress"
+            android:textSize="20sp"
+            android:id="@+id/etRegisterEmailAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="15dp"
+            android:inputType="text"
+            android:singleLine="true"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/txtRegisterPassword"
+            android:layout_width="162dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="15dp"
+            android:paddingLeft="10dp"
+            android:singleLine="true"
+            android:text="Password:"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+        <EditText
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/txtRegisterPassword"
+            android:textSize="20sp"
+            android:id="@+id/etRegisterPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:inputType="text"
+            android:singleLine="true"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/txtRegisterCellNumber"
+            android:layout_width="162dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="15dp"
+            android:paddingLeft="10dp"
+            android:singleLine="true"
+            android:text="Cell Number:"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+        <EditText
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/txtRegisterCellNumber"
+            android:textSize="20sp"
+            android:id="@+id/etRegisterCellNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:inputType="text"
+            android:singleLine="true"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/txtRegisterCampusName"
+            android:layout_width="162dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="15dp"
+            android:paddingLeft="10dp"
+            android:singleLine="true"
+            android:text="Campus Name:"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/txtRegisterCampusName"
+            android:textSize="20sp"
+            android:id="@+id/spinnerRegisterCampusName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:inputType="text"
+            android:singleLine="true"/>
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btnRegisterOnRegister"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="Register"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp" />
+
+</LinearLayout>
