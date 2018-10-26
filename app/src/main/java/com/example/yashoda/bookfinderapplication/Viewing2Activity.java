@@ -38,6 +38,8 @@ public class Viewing2Activity extends AppCompatActivity {
     Button btnInterested;
 
     SharedPreferences sharedPref;
+
+    SharedPreferences.Editor editor;
     String emailAddressSP;
     int index;
 
@@ -77,6 +79,10 @@ public class Viewing2Activity extends AppCompatActivity {
             public void run() {
                 try {
                     book = populateViews(index);
+                    String bookLocationDetails = book.getLocationDetails();
+                    editor = sharedPref.edit();
+                    editor.putString("key3", bookLocationDetails);
+                    editor.commit();
                 } catch (final Exception e) {
                     progressDialog.cancel();
                     runOnUiThread(new Runnable() {
