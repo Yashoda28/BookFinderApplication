@@ -66,4 +66,8 @@
     <string name="radio_unavailableUpdating">unavailable</string>
     <string name="radio_availableUpdating">available</string>
 
+
+    <!--Maps-->
+    <string name="title_activity_maps">Map</string>
+
 </resources>
