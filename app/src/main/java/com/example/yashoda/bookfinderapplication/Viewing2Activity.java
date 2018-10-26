@@ -33,9 +33,9 @@ public class Viewing2Activity extends AppCompatActivity {
     TextView etTitle;
     TextView etAuthor;
     TextView etSummary;
+    Button btnInterested;
     TextView etPrice;
     Button btnUpdate;
-    Button btnInterested;
 
     SharedPreferences sharedPref;
 
@@ -58,9 +58,10 @@ public class Viewing2Activity extends AppCompatActivity {
 
         Button btnBack = findViewById(R.id.btnBackOnViewing2);
         createViewMapButton(btnBack);
+        btnInterested = findViewById(R.id.btnInterestedOnViewing2);
+        createViewInterested(btnInterested);
 
         btnUpdate = findViewById(R.id.btnUpdateOnViewing2);
-        btnInterested = findViewById(R.id.btnInterestedOnViewing2);
         //createInterestedButton(btnInterested);
 
         available = findViewById(R.id.radio_available);
@@ -185,13 +186,29 @@ public class Viewing2Activity extends AppCompatActivity {
         return "SELECT * FROM BOOK B WHERE B.BOOKID ='" + index + "'";
     }
 
+    private void createViewInterested(Button btnInterested) {
+        btnInterested.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendEmail();
+            }
+        });
+    }
+
     private void createViewMapButton(Button btnBack) {
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
+
                 startActivity(intent);
             }
         });
+    }
+
+    public void sendEmail(){
+        String i = emailAddressSP;
+        Email email = new Email(context, book.getEmailAddress(), i + " wants the book", "give " + i + " da book");
+        email.execute();
     }
 }
