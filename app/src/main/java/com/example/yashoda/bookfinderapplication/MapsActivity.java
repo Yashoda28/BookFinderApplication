@@ -3,8 +3,8 @@ package com.example.yashoda.bookfinderapplication;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -17,16 +17,19 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+import static com.example.yashoda.bookfinderapplication.CommonUtils.handleException;
 
-    private GoogleMap mMap;
-    String campusName;
-    SharedPreferences sharedPref;
-    int index;
-    Context context = MapsActivity.this;
-    Connectivity connectivity = new Connectivity();
-    LatLng mark;
-    float zoomLevel = 16.0f; //This goes up to 21
+public class MapsActivity extends AppCompatActivity
+        implements OnMapReadyCallback {
+
+    private static ResultSet rs;
+    private static String campusName;
+    private static int index;
+    private static Connectivity connectivity = new Connectivity();
+
+    private Context context = MapsActivity.this;
+
+    String query;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,16 +40,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
-        index = sharedPref.getInt("key2",0);
-        try {
-            ResultSet rs = connectivity.getResultSet(getlocationDetails(index));
-            //campusName = rs.getString(9);
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
+        index = sharedPref.getInt("key2", 0);
+        query = "SELECT * FROM BOOK B WHERE B.BookID = " + index;
 
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        };
+        populateMap();
     }
 
 
@@ -61,52 +59,67 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
-        campusName="UKZN Westville Campus";
-        if (campusName.contains("Westville"))
-        {
-            LatLng mark = new LatLng(-29.817897, 30.942771);
-            Marker westville = mMap.addMarker(new MarkerOptions().position(mark).title("UKZN Westville Campus"));
-            westville.showInfoWindow();
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mark, zoomLevel));
-        }
-
-        else if (campusName.contains("Howard"))
-        {
-            LatLng mark = new LatLng(-29.867145, 30.976453);
-            Marker howard = mMap.addMarker(new MarkerOptions().position(mark).title("UKZN Howard Campus"));
-            howard.showInfoWindow();
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mark, zoomLevel));
-        }
-        else  if (campusName.contains("Edgewood"))
-        {
-            LatLng mark = new LatLng(-29.817413, 30.846677);
-            Marker edgewood = mMap.addMarker(new MarkerOptions().position(mark).title("UKZN Edgewood Campus"));
-            edgewood.showInfoWindow();
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mark, zoomLevel));
-        }
-        else  if (campusName.contains("Medical"))
-        {
-            LatLng mark = new LatLng(-29.874364, 30.990272);
-            Marker medical = mMap.addMarker(new MarkerOptions().position(mark).title("UKZN Medical School"));
-            medical.showInfoWindow();
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mark, zoomLevel));
-        }
-        else  if (campusName.contains("PMB"))
-        {
+        //This goes up to 21
+        float zoomLevel = 16.0f;
+        if (campusName != null) {
+            campusName = campusName.toUpperCase();
+            if ("WESTVILLE".contains(campusName)) {
+                LatLng mark = new LatLng(-29.817897, 30.942771);
+                Marker westville = googleMap.addMarker(new MarkerOptions().position(mark).title("UKZN Westville Campus"));
+                westville.showInfoWindow();
+                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mark, zoomLevel));
+            } else if ("HOWARD".contains(campusName)) {
+                LatLng mark = new LatLng(-29.867145, 30.976453);
+                Marker howard = googleMap.addMarker(new MarkerOptions().position(mark).title("UKZN Howard Campus"));
+                howard.showInfoWindow();
+                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mark, zoomLevel));
+            } else if ("EDGEWOOD".contains(campusName)) {
+                LatLng mark = new LatLng(-29.817413, 30.846677);
+                Marker edgewood = googleMap.addMarker(new MarkerOptions().position(mark).title("UKZN Edgewood Campus"));
+                edgewood.showInfoWindow();
+                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mark, zoomLevel));
+            } else if ("MEDICAL".contains(campusName)) {
+                LatLng mark = new LatLng(-29.874364, 30.990272);
+                Marker medical = googleMap.addMarker(new MarkerOptions().position(mark).title("UKZN Medical School"));
+                medical.showInfoWindow();
+                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mark, zoomLevel));
+            } else if ("PMB".contains(campusName)) {
+                LatLng mark = new LatLng(-29.616819, 30.394263);
+                Marker PMB = googleMap.addMarker(new MarkerOptions().position(mark).title("UKZN PMB Campus"));
+                PMB.showInfoWindow();
+                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mark, zoomLevel));
+            }
+        } else {
             LatLng mark = new LatLng(-29.616819, 30.394263);
-            Marker PMB = mMap.addMarker(new MarkerOptions().position(mark).title("UKZN PMB Campus"));
+            Marker PMB = googleMap.addMarker(new MarkerOptions().position(mark).title("UKZN PMB Campus"));
             PMB.showInfoWindow();
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mark, zoomLevel));
+            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mark, zoomLevel));
         }
-
-        // Add a marker in Sydney and move the camera
-        //LatLng sydney = new LatLng(-34, 151);
-        //mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        //mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
 
-    private String getlocationDetails(int index) {
-        return "SELECT LOCATIONDETAILS FROM BOOK B WHERE B.BookID='" + index + "'";
+    private void populateMap() {
+        try {
+            new Thread(new Runnable() {
+                public void run() {
+                    try {
+                        rs = connectivity.getResultSet(query);
+                        campusName = rs.getString(9);
+                    } catch (final SQLException f) {
+                        runOnUiThread(new Runnable() {
+                            public void run() {
+                                handleException(context, f, f.getMessage());
+                            }
+                        });
+                    }
+                }
+            });
+        } catch (final Exception e) {
+            runOnUiThread(new Runnable() {
+                public void run() {
+                    handleException(context, e, e.getMessage());
+                }
+            });
+        }
     }
+
 }

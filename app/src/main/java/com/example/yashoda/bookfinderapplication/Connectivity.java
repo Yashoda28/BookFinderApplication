@@ -47,19 +47,27 @@ class Connectivity extends AsyncTask {
     }
 
     synchronized ResultSet getResultSet(String query) throws SQLException {
-        if (connection != null) {
-            Statement sm = connection.createStatement();
-            return sm.executeQuery(query);
+        if (connection == null) {
+            connect();
         }
-        throw new SQLException(FAILED_TO_CONNECT_ERROR_MESSAGE);
+        if(connection == null)
+        {
+            throw new SQLException(FAILED_TO_CONNECT_ERROR_MESSAGE);
+        }
+        Statement sm = connection.createStatement();
+        return sm.executeQuery(query);
     }
 
     synchronized int insertUpdateOrDelete(String query) throws SQLException {
-        if (connection != null) {
-            Statement sm = connection.createStatement();
-            return sm.executeUpdate(query);
+        if (connection == null) {
+            connect();
         }
-        throw new SQLException(FAILED_TO_CONNECT_ERROR_MESSAGE);
+        if(connection == null)
+        {
+            throw new SQLException(FAILED_TO_CONNECT_ERROR_MESSAGE);
+        }
+        Statement sm = connection.createStatement();
+        return sm.executeUpdate(query);
     }
 
 }

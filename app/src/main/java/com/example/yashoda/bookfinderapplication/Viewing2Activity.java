@@ -19,8 +19,6 @@ import android.widget.TextView;
 import com.example.yashoda.bookfinderapplication.tables.Book;
 
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.Properties;
 
 import static com.example.yashoda.bookfinderapplication.CommonUtils.handleException;
 
@@ -49,8 +47,6 @@ public class Viewing2Activity extends AppCompatActivity {
 
     RadioButton available;
     RadioButton unavailable;
-    String status;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -59,7 +55,7 @@ public class Viewing2Activity extends AppCompatActivity {
         setContentView(R.layout.activity_viewing2);
 
         Button btnBack = findViewById(R.id.btnBackOnViewing2);
-        createBackButton(btnBack);
+        createViewMapButton(btnBack);
 
         btnUpdate = findViewById(R.id.btnUpdateOnViewing2);
         btnInterested = findViewById(R.id.btnInterestedOnViewing2);
@@ -183,11 +179,12 @@ public class Viewing2Activity extends AppCompatActivity {
         return "SELECT * FROM BOOK B WHERE B.BOOKID ='" + index + "'";
     }
 
-    private void createBackButton(Button btnBack) {
+    private void createViewMapButton(Button btnBack) {
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(context, ViewingActivity.class));
+                Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
+                startActivity(intent);
             }
         });
     }

@@ -197,7 +197,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:text="Back"
+        android:text="View on Map"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp" />
 

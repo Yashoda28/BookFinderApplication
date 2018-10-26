@@ -74,7 +74,7 @@ public class ViewingActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 index = details.get(i).getBookID();
                 editor.putInt("key2", index);
-                editor.commit();
+                editor.apply();
                 startActivity(new Intent(context, Viewing2Activity.class));
             }
         });

@@ -43,7 +43,7 @@
     <string name="etViewing2Summary"> </string>
     <string name="txtViewing2Price">Price:</string>
     <string name="etViewing2Price"> </string>
-    <string name="btnBackOnViewing2">Back</string>
+    <string name="btnBackOnViewing2">View on Map</string>+
     <string name="btnUpdateOnViewing2">Update</string>
     <string name="radio_available">available</string>
     <string name="radio_unavailable">unavailable</string>
