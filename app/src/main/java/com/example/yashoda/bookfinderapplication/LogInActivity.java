@@ -41,6 +41,11 @@ public class LogInActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         connectivity.execute("");
         setContentView(R.layout.activity_log_in);
+
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setLogo(R.mipmap.ic_launcher_weight);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+
         sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
         editor = sharedPref.edit();
 

@@ -56,6 +56,10 @@ public class Viewing2Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_viewing2);
 
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setLogo(R.mipmap.ic_launcher_weight);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+
         Button btnBack = findViewById(R.id.btnBackOnViewing2);
         createViewMapButton(btnBack);
         btnInterested = findViewById(R.id.btnInterestedOnViewing2);
@@ -74,7 +78,7 @@ public class Viewing2Activity extends AppCompatActivity {
         findViews();
 
         progressDialog = ProgressDialog.show(context,
-                "Logging in",
+                "Loading",
                 "Please be patient....", false);
         new Thread(new Runnable() {
             public void run() {
@@ -208,7 +212,8 @@ public class Viewing2Activity extends AppCompatActivity {
 
     public void sendEmail(){
         String i = emailAddressSP;
-        Email email = new Email(context, book.getEmailAddress(), i + " wants the book", "give " + i + " da book");
+        Email email = new Email(context, book.getEmailAddress(), i + " has an interest in second hand textbook", "Hello\n\n "+i  +
+                " is interested in purchasing your " +book.getTitle()+ " textbook. Contact them at their email address. \n\n Thanks ");
         email.execute();
     }
 }

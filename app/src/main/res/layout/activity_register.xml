@@ -4,18 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_test1"
     android:orientation="vertical"
     tools:context=".RegisterActivity">
 
     <TextView
+        android:id="@+id/txtDetails"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Enter your Details"
-        android:id="@+id/txtDetails"
         android:layout_gravity="center_horizontal"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp" />
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="10dp"
+        android:fontFamily="cursive"
+        android:textSize="35sp"
+        android:text="Enter your Details"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -100,7 +104,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginTop="15dp"
-            android:inputType="text"
+            android:inputType="textEmailAddress"
             android:singleLine="true"/>
     </RelativeLayout>
 
@@ -129,7 +133,7 @@
             android:layout_marginBottom="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:inputType="text"
+            android:inputType="textPassword"
             android:singleLine="true"/>
     </RelativeLayout>
 
@@ -200,8 +204,11 @@
         android:id="@+id/btnRegisterOnRegister"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="10dp"
         android:text="Register"
+        android:background="@layout/reflected_gradient_effect"
+        android:textColor="#f9fcfa"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp" />
 

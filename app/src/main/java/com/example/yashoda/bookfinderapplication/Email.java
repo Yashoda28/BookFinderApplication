@@ -15,9 +15,6 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-/**
- * Created by Belal on 10/30/2015.
- */
 
 //Class is extending AsyncTask because this class is going to perform a networking operation
 public class Email extends AsyncTask<Void, Void, Void> {

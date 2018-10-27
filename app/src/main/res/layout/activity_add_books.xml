@@ -2,6 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_test1"
     android:fillViewport="true">
 
 <LinearLayout
@@ -45,12 +46,14 @@
         <Button
             android:id="@+id/btnUploadImageOnAddBooks"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/imageView2"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="42dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
+            android:background="@layout/reflected_gradient_effect"
+            android:textColor="#f9fcfa"
             android:text="@string/btnUploadImageOnAddBooks" />
     </RelativeLayout>
 
@@ -173,6 +176,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:text="Save"
+        android:background="@layout/reflected_gradient_effect"
+        android:textColor="#f9fcfa"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp" />
 

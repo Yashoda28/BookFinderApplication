@@ -40,6 +40,10 @@ public class ViewHistoryActivity extends AppCompatActivity
 
     SharedPreferences sharedPref;
     String emailAddressSP;
+    SharedPreferences.Editor editor;
+    public static int index;
+
+    ArrayList<Book> details = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -47,11 +51,17 @@ public class ViewHistoryActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_history);
 
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setLogo(R.mipmap.ic_launcher_weight);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+
         bookDetails2 = new ArrayList<>();
         pictureImage = new ArrayList<>();
 
         sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
         emailAddressSP = sharedPref.getString("key1","No email defined");
+
+        editor = sharedPref.edit();
 
         findViews();
 
@@ -59,12 +69,15 @@ public class ViewHistoryActivity extends AppCompatActivity
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l)
             {
+                index = details.get(i).getBookID();
+                editor.putInt("key2", index);
+                editor.commit();
                 startActivity(new Intent(context, Viewing2Activity.class));
             }
         });
 
         progressDialog = ProgressDialog.show(context,
-                "Logging in",
+                "Loading",
                 "Please be patient....", false);
         new Thread(new Runnable()
         {
@@ -91,7 +104,7 @@ public class ViewHistoryActivity extends AppCompatActivity
 
     private void findViews()
     {
-        picList = (ListView)findViewById(R.id.pictureListView);
+        picList = (ListView)findViewById(R.id.pictureListViewOnHistory);
     }
 
     class CustomAdapter extends BaseAdapter
@@ -116,17 +129,22 @@ public class ViewHistoryActivity extends AppCompatActivity
         @Override
         public View getView(int i, View view, ViewGroup viewGroup) {
             view = getLayoutInflater().inflate(R.layout.custom_layout,null);
-            ImageView dImg = (ImageView)view.findViewById(R.id.imageViewCustom);
-            TextView dText = (TextView)view.findViewById(R.id.textViewCustom);
+            if (!(pictureImage.get(i) == null)) {
+                ImageView dImg = (ImageView) view.findViewById(R.id.imageViewCustom);
+                TextView dText = (TextView) view.findViewById(R.id.textViewCustom);
 
-            dText.setText(bookDetails2.get(i));
+                //dImg.setImageResource(imgID[0]);
+                dText.setText(bookDetails2.get(i));
 
-            byte[] decodeString = Base64.decode(pictureImage.get(i), Base64.DEFAULT);
-            Bitmap decodebitmap = BitmapFactory.decodeByteArray(decodeString, 0, decodeString.length);
-            dImg.setImageBitmap(decodebitmap);
-            dImg.invalidate();
+                /// dText.setText(advertDetails.get(i));
+                // Toast.makeText(Main6Activity.this ,"view get view", Toast.LENGTH_LONG).show();
+                byte[] decodeString = Base64.decode(pictureImage.get(i), Base64.DEFAULT);
+                Bitmap decodebitmap = BitmapFactory.decodeByteArray(decodeString, 0, decodeString.length);
+                dImg.setImageBitmap(decodebitmap);
+                //errorMsg.setText(msg + " not empty");
+                dImg.invalidate();
 
-
+            }
 
 
             return view;
@@ -135,7 +153,6 @@ public class ViewHistoryActivity extends AppCompatActivity
 
     private void populateViews(ResultSet rs) throws Exception
     {
-        ArrayList<Book> details = new ArrayList<>();
         ArrayList<String>imageByte = new ArrayList<>();
 
         int i=0;

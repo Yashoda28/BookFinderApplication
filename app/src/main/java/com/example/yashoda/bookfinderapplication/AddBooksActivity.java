@@ -60,6 +60,10 @@ public class AddBooksActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_books);
 
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setLogo(R.mipmap.ic_launcher_weight);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+
         sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
         emailAddressSP = sharedPref.getString("key1","No email defined");
 

@@ -2,6 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_test1"
     android:fillViewport="true">
 
 <LinearLayout
@@ -16,14 +17,15 @@
         android:id="@+id/txtUpdateDetailsOnUpdating"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
         android:layout_alignParentStart="true"
-        android:paddingLeft="10dp"
         android:layout_alignParentTop="true"
+        android:layout_marginTop="25dp"
+        android:fontFamily="cursive"
+        android:paddingLeft="10dp"
         android:singleLine="true"
         android:text="UPDATE DETAILS:"
         android:textAlignment="center"
-        android:textSize="20sp"
+        android:textSize="30sp"
         android:textStyle="bold" />
 
     <RelativeLayout
@@ -194,6 +196,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:text="Save"
+        android:background="@layout/reflected_gradient_effect"
+        android:textColor="#f9fcfa"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp" />
 

@@ -50,6 +50,10 @@ public class RegisterActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setLogo(R.mipmap.ic_launcher_weight);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+
         Button btnRegister= findViewById(R.id.btnRegisterOnRegister);
 
         sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
@@ -94,7 +98,7 @@ public class RegisterActivity extends AppCompatActivity
         adapter.add("UKZN Howard Campus");
         adapter.add("UKZN Westville Campus");
         adapter.add("UKZN PMB Campus");
-        adapter.add("UKZN PMB Campus");
+        adapter.add("UKZN Edgewood Campus");
         adapter.add("UKZN Medical School");
         adapter.add("Select Campus"); //This is the text that will be displayed as hint.
 
@@ -122,7 +126,7 @@ public class RegisterActivity extends AppCompatActivity
                 final String campusName = spinCampusName.getSelectedItem().toString();
 
                 progressDialog = ProgressDialog.show(context,
-                        "Adding Information",
+                        "Saving Information",
                         "Please be patient....", false);
 
                 new Thread(new Runnable() {

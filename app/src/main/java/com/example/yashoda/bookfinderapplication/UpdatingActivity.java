@@ -56,6 +56,10 @@ public class UpdatingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_updating);
 
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setLogo(R.mipmap.ic_launcher_weight);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+
         findViews();
 
         Button btnUpdate = findViewById(R.id.btnUpdateOnUpdateBooks);

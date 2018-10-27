@@ -1,9 +1,17 @@
 <resources>
     <string name="app_name">BookFinderApplication</string>
+    <string name="imageOfBooks"> </string>
 
     <!--LogIn-->
+    <string name="LogInHeading">Log In</string>
     <string name="btnLoginOnLogIn">Login</string>
     <string name="btnRegisterOnLogIn">Register</string>
+
+    <!--Main-->
+    <string name="txtWelcome">Welcome to Book Finder</string>
+    <string name="imageOfBooksOnMain"> </string>
+    <string name="LoginOnMain">Login</string>
+    <string name="RegisterOnMain">Register</string>
 
     <!--Register-->
     <string name="txtDetails">Enter your Details</string>
@@ -31,7 +39,8 @@
     <string name="btnViewHistoryOnViewing">View History of Advertised Books</string>
 
     <!--View History-->
-    <string name="imageViewOnViewHistory"> </string>
+    <string name="HistoryHeading">Your Advertised Textbook History</string>
+    <string name="pictureListViewOnHistory"> </string>
 
     <!--Viewing2-->
     <string name="imageViewOnViewing2"> </string>
@@ -65,7 +74,6 @@
     <string name="radiogroupUpdating"> </string>
     <string name="radio_unavailableUpdating">unavailable</string>
     <string name="radio_availableUpdating">available</string>
-
 
     <!--Maps-->
     <string name="title_activity_maps">Map</string>

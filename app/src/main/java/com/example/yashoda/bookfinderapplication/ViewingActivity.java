@@ -54,6 +54,10 @@ public class ViewingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_viewing);
 
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setLogo(R.mipmap.ic_launcher_weight);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+
         bookDetails2 = new ArrayList<>();
         pictureImage = new ArrayList<>();
 
@@ -74,13 +78,13 @@ public class ViewingActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 index = details.get(i).getBookID();
                 editor.putInt("key2", index);
-                editor.apply();
+                editor.commit();
                 startActivity(new Intent(context, Viewing2Activity.class));
             }
         });
 
         progressDialog = ProgressDialog.show(context,
-                "Logging in",
+                "Loading",
                 "Please be patient....", false);
         new Thread(new Runnable() {
             public void run() {
@@ -112,7 +116,7 @@ public class ViewingActivity extends AppCompatActivity {
             public void onClick(View v) {
                 final String title = etSearch.getText().toString();
                 progressDialog = ProgressDialog.show(context,
-                        "Saving Information",
+                        "Loading",
                         "Please be patient....", false);
 
                 new Thread(new Runnable() {
