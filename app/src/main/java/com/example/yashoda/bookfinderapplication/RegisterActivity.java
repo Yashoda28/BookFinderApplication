@@ -3,6 +3,8 @@ package com.example.yashoda.bookfinderapplication;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -39,6 +41,9 @@ public class RegisterActivity extends AppCompatActivity
     EditText etCellNumber;
     Spinner spinCampusName;
 
+    SharedPreferences sharedPref;
+    SharedPreferences.Editor editor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -46,6 +51,9 @@ public class RegisterActivity extends AppCompatActivity
         setContentView(R.layout.activity_register);
 
         Button btnRegister= findViewById(R.id.btnRegisterOnRegister);
+
+        sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
+        editor = sharedPref.edit();
 
         findViews();
 
@@ -83,10 +91,11 @@ public class RegisterActivity extends AppCompatActivity
 
     };
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        adapter.add("UKZN Howard");
-        adapter.add("UKZN Westville");
-        adapter.add("UKZN PMB");
-        adapter.add("DUT");
+        adapter.add("UKZN Howard Campus");
+        adapter.add("UKZN Westville Campus");
+        adapter.add("UKZN PMB Campus");
+        adapter.add("UKZN PMB Campus");
+        adapter.add("UKZN Medical School");
         adapter.add("Select Campus"); //This is the text that will be displayed as hint.
 
         spinCampusName.setAdapter(adapter);
@@ -142,6 +151,8 @@ public class RegisterActivity extends AppCompatActivity
     private Boolean Register(String emailAddress, String password, String name, String surname, String cellNumber, String campusName) throws SQLException
     {
         int rowsInserted = connectivity.insertUpdateOrDelete(getDetailsQuery(emailAddress, password, name, surname, cellNumber, campusName));
+        editor.putString("campusNameDetails",campusName);
+        editor.commit();
         progressDialog.cancel();
         startActivity(new Intent(context, ViewingActivity.class));
         return true;

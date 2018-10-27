@@ -104,7 +104,8 @@ public class AddBooksActivity extends AppCompatActivity
                 final String summary = etSummary.getText().toString();
                 final Double price = Double.parseDouble(etPrice.getText().toString());
                 final String status = "Available";
-                final String locationDetails = "Available";
+                final String locationDetails = sharedPref.getString("campusNameDetails","UKZN PMB Campus");
+
 
                 progressDialog = ProgressDialog.show(context,
                         "Saving Information",
