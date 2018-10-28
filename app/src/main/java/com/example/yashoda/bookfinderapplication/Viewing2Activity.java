@@ -148,7 +148,7 @@ public class Viewing2Activity extends AppCompatActivity {
                             avail.setClickable(false);
                             unavail.setClickable(false);
                             btnInterested.setEnabled(false);
-                            Toast.makeText(context,"Book is sold out",Toast.LENGTH_LONG).show();
+                            Toast.makeText(context,"Book is unavailable",Toast.LENGTH_LONG).show();
                         }
 
 //                        if("Unavailable".equalsIgnoreCase(book.getStatus()))
