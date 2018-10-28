@@ -153,7 +153,7 @@
             android:text="Status"
             android:textSize="20sp"
             android:textStyle="bold" />
-        <RadioGroup
+        <!--<RadioGroup
             android:layout_width="match_parent"
             android:id="@+id/radiogroupViewing2"
             android:layout_height="wrap_content"
@@ -172,7 +172,27 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="unavailable"/>
-        </RadioGroup>
+        </RadioGroup>-->
+        <CheckBox android:id="@+id/checkbox_available"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:clickable="false"
+            android:layout_toRightOf="@id/txtViewing2Status"
+            android:layout_marginBottom="25dp"
+            android:text="available"
+            android:onClick="onCheckboxClicked"/>
+        <CheckBox android:id="@+id/checkbox_unavailable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:clickable="false"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/txtViewing2Status"
+            android:layout_below="@+id/checkbox_available"
+            android:layout_marginTop="-25dp"
+            android:text="unavailable"
+            android:onClick="onCheckboxClicked"/>
     </RelativeLayout>
 
     <Button
@@ -207,6 +227,33 @@
         android:text="View on Map"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btnBackToHistoryOnViewing2"
+            android:layout_width="175dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@layout/reflected_gradient_effect"
+            android:text="Back to History"
+            android:textColor="#f9fcfa" />
+
+        <Button
+            android:id="@+id/btnBackToBooksViewing2"
+            android:layout_width="191dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:background="@layout/reflected_gradient_effect"
+            android:text="View all Books"
+            android:textColor="#f9fcfa" />
+
+    </RelativeLayout>
 
 </LinearLayout>
 </ScrollView>

@@ -195,6 +195,7 @@ public class AddBooksActivity extends AppCompatActivity
         int rowsInserted = connectivity.insertUpdateOrDelete(getDetailsQuery(email, title, author, summary, price, status, encodedImage, locationDetails));
         progressDialog.cancel();
         startActivity(new Intent(context, ViewingActivity.class));
+        finish();
         return true;
     }
 

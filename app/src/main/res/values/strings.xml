@@ -54,10 +54,16 @@
     <string name="etViewing2Price"> </string>
     <string name="btnBackOnViewing2">View on Map</string>+
     <string name="btnUpdateOnViewing2">Update</string>
+    <string name="btnBackToHistoryOnViewing2">Back to History</string>
+    <string name="btnBackToBooksViewing2">View all Books</string>
+
     <string name="radio_available">available</string>
     <string name="radio_unavailable">unavailable</string>
     <string name="radiogroupViewing2"> </string>
     <string name="btnInterestedOnViewing2">I want this book</string>
+
+    <string name="checkbox_available"> </string>
+    <string name="checkbox_unavailable"> </string>
 
     <!--custom_layout-->
     <string name="imageViewCustom"> </string>
@@ -71,9 +77,13 @@
     <string name="txtUpdateBookSummary">Summary:</string>
     <string name="txtUpdateBookPrice">Price:</string>
     <string name="btnUpdateOnUpdateBooks">Save</string>
+
     <string name="radiogroupUpdating"> </string>
     <string name="radio_unavailableUpdating">unavailable</string>
     <string name="radio_availableUpdating">available</string>
+
+    <string name="checkbox_availableOnUpdating"> </string>
+    <string name="checkbox_unavailableOnUpdating"> </string>
 
     <!--Maps-->
     <string name="title_activity_maps">Map</string>

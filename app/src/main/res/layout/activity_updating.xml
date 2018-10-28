@@ -155,20 +155,21 @@
 
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="89dp">
+
         <TextView
             android:id="@+id/txtUpdatingStatus"
             android:layout_width="162dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
             android:layout_alignParentStart="true"
-            android:paddingLeft="10dp"
             android:layout_alignParentTop="true"
+            android:layout_marginTop="25dp"
+            android:paddingLeft="10dp"
             android:singleLine="true"
             android:text="Status"
             android:textSize="20sp"
             android:textStyle="bold" />
-        <RadioGroup
+        <!--<RadioGroup
             android:layout_width="match_parent"
             android:id="@+id/radiogroupUpdating"
             android:layout_height="wrap_content"
@@ -187,14 +188,38 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="unavailable"/>
-        </RadioGroup>
+        </RadioGroup>-->
+
+        <CheckBox
+            android:id="@+id/checkbox_availableOnUpdating"
+            android:layout_width="wrap_content"
+            android:layout_height="43dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="25dp"
+            android:layout_toRightOf="@id/txtUpdatingStatus"
+            android:onClick="onCheckboxClicked"
+            android:text="available" />
+
+        <CheckBox
+            android:id="@+id/checkbox_unavailableOnUpdating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/txtUpdatingStatus"
+            android:layout_below="@+id/checkbox_availableOnUpdating"
+            android:layout_marginTop="-25dp"
+            android:onClick="onCheckboxClicked"
+            android:text="unavailable" />
     </RelativeLayout>
+
+
 
     <Button
         android:id="@+id/btnUpdateOnUpdateBooks"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
+        android:layout_marginTop="25dp"
         android:text="Save"
         android:background="@layout/reflected_gradient_effect"
         android:textColor="#f9fcfa"

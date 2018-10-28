@@ -126,8 +126,6 @@ public class ViewingActivity extends AppCompatActivity {
                             populateViews(rs);
                             runOnUiThread(new Runnable() {
                                 public void run() {
-
-
                                     CustomAdapter lAdapt = new CustomAdapter();
                                     picList.setAdapter(lAdapt);
                                     progressDialog.cancel();
@@ -196,6 +194,7 @@ public class ViewingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(context, AddBooksActivity.class));
+                finish();
             }
         });
     }
@@ -205,6 +204,7 @@ public class ViewingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(context, ViewHistoryActivity.class));
+                finish();
             }
         });
     }

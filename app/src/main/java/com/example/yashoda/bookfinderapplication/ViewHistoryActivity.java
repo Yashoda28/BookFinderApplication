@@ -73,6 +73,7 @@ public class ViewHistoryActivity extends AppCompatActivity
                 editor.putInt("key2", index);
                 editor.commit();
                 startActivity(new Intent(context, Viewing2Activity.class));
+                finish();
             }
         });
 

@@ -42,10 +42,6 @@ public class LogInActivity extends AppCompatActivity
         connectivity.execute("");
         setContentView(R.layout.activity_log_in);
 
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setLogo(R.mipmap.ic_launcher_weight);
-        getSupportActionBar().setDisplayUseLogoEnabled(true);
-
         sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
         editor = sharedPref.edit();
 
@@ -102,6 +98,7 @@ public class LogInActivity extends AppCompatActivity
 
     private void goToRegistration() {
         startActivity(new Intent(LogInActivity.this, RegisterActivity.class));
+        finish();
     }
 
     private void LogIn(String emailAddress, String password) throws Exception {
@@ -120,6 +117,7 @@ public class LogInActivity extends AppCompatActivity
     private void goToInfoView() throws InterruptedException {
         startActivity(new Intent(LogInActivity.this, ViewingActivity.class));
         progressDialog.cancel();
+        finish();
     }
 
     private String getLoginQuery(String emailAddress, String password) {

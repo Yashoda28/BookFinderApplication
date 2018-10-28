@@ -159,6 +159,7 @@ public class RegisterActivity extends AppCompatActivity
         editor.commit();
         progressDialog.cancel();
         startActivity(new Intent(context, ViewingActivity.class));
+        finish();
         return true;
     }
 

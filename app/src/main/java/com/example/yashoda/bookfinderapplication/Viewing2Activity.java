@@ -12,9 +12,11 @@ import android.os.Bundle;
 import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.yashoda.bookfinderapplication.tables.Book;
 
@@ -47,8 +49,11 @@ public class Viewing2Activity extends AppCompatActivity {
 
     ResultSet rs;
 
-    RadioButton available;
-    RadioButton unavailable;
+//    RadioButton available;
+//    RadioButton unavailable;
+
+    CheckBox avail;
+    CheckBox unavail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -64,12 +69,21 @@ public class Viewing2Activity extends AppCompatActivity {
         createViewMapButton(btnBack);
         btnInterested = findViewById(R.id.btnInterestedOnViewing2);
         createViewInterested(btnInterested);
+        Button btnBackViewHistory = findViewById(R.id.btnBackToHistoryOnViewing2);
+        createBackViewHistory(btnBackViewHistory);
+        Button btnViewAllBooks = findViewById(R.id.btnBackToBooksViewing2);
+        createViewAllBooks(btnViewAllBooks);
 
         btnUpdate = findViewById(R.id.btnUpdateOnViewing2);
         //createInterestedButton(btnInterested);
 
-        available = findViewById(R.id.radio_available);
-        unavailable = findViewById(R.id.radio_unavailable);
+//        available = findViewById(R.id.radio_available);
+//        unavailable = findViewById(R.id.radio_unavailable);
+
+        avail = findViewById(R.id.checkbox_available);
+        unavail = findViewById(R.id.checkbox_unavailable);
+        //avail.setEnabled(false);
+        unavail.setEnabled(false);
 
         sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
         emailAddressSP = sharedPref.getString("key1","No email defined");
@@ -117,15 +131,33 @@ public class Viewing2Activity extends AppCompatActivity {
                             btnUpdate.setVisibility(View.GONE);
                         }
 
-                        if("Unavailable".equalsIgnoreCase(book.getStatus()))
+                        if("Available".equalsIgnoreCase(book.getStatus()))
                         {
-                            unavailable.setSelected(true);
-                            available.setSelected(false);
+                            avail.setChecked(true);
+                            unavail.setChecked(false);
+                            avail.setClickable(false);
+                            unavail.setClickable(false);
                         }
-                        else{
-                            unavailable.setSelected(false);
-                            available.setSelected(true);
+                        else
+                        {
+                            unavail.setChecked(true);
+                            avail.setChecked(false);
+                            avail.setEnabled(false);
+                            avail.setClickable(false);
+                            unavail.setClickable(false);
+                            btnInterested.setEnabled(false);
+                            Toast.makeText(context,"Book is sold out",Toast.LENGTH_LONG).show();
                         }
+
+//                        if("Unavailable".equalsIgnoreCase(book.getStatus()))
+//                        {
+//                            unavailable.setSelected(true);
+//                            available.setSelected(false);
+//                        }
+//                        else{
+//                            unavailable.setSelected(false);
+//                            available.setSelected(true);
+//                        }
 
                         String pic = book.getPicture();
                         imagebox.setImageBitmap(decodeToBase64(pic));
@@ -190,13 +222,27 @@ public class Viewing2Activity extends AppCompatActivity {
         return "SELECT * FROM BOOK B WHERE B.BOOKID ='" + index + "'";
     }
 
-    private void createViewInterested(Button btnInterested) {
+    private void createViewInterested(Button btnInterested)
+    {
         btnInterested.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 sendEmail();
             }
         });
+//        if("Available".equalsIgnoreCase(book.getStatus()))
+//        {
+
+//        }
+//        else
+//        {
+//            btnInterested.setEnabled(false);
+//            btnInterested.setOnClickListener(new View.OnClickListener() {
+//                public void onClick(View v) {
+//                    Toast.makeText(context,"Book is sold out, unable to send email",Toast.LENGTH_LONG).show();
+//                }
+//            });
+//        }
     }
 
     private void createViewMapButton(Button btnBack) {
@@ -204,8 +250,8 @@ public class Viewing2Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
-
                 startActivity(intent);
+                finish();
             }
         });
     }
@@ -215,5 +261,27 @@ public class Viewing2Activity extends AppCompatActivity {
         Email email = new Email(context, book.getEmailAddress(), i + " has an interest in second hand textbook", "Hello\n\n "+i  +
                 " is interested in purchasing your " +book.getTitle()+ " textbook. Contact them at their email address. \n\n Thanks ");
         email.execute();
+    }
+
+    private void createViewAllBooks(Button btnViewAllBooks)
+    {
+        btnViewAllBooks.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(context, ViewingActivity.class));
+                finish();
+            }
+        });
+    }
+
+    private void createBackViewHistory(Button btnBackViewHistory)
+    {
+        btnBackViewHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(context, ViewHistoryActivity.class));
+                finish();
+            }
+        });
     }
 }

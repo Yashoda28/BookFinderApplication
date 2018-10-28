@@ -10,12 +10,14 @@ import android.preference.PreferenceManager;
 import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 
 import com.example.yashoda.bookfinderapplication.tables.Book;
@@ -45,11 +47,15 @@ public class UpdatingActivity extends AppCompatActivity {
     int index;
 
     Book book;
+    ResultSet rs;
 
-    RadioGroup radio_group;
-    RadioButton rad_available;
-    RadioButton rad_unavailable;
+//    RadioGroup radio_group;
+//    RadioButton rad_available;
+//    RadioButton rad_unavailable;
     String status;
+
+    CheckBox avail;
+    CheckBox unavail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,9 +72,13 @@ public class UpdatingActivity extends AppCompatActivity {
 
         createUpdateButton(btnUpdate, etTitle, etAuthor, etSummary, etPrice);
 
-        radio_group = findViewById(R.id.radiogroupUpdating);
-        rad_available = findViewById(R.id.radio_availableUpdating);
-        rad_unavailable = findViewById(R.id.radio_unavailableUpdating);
+//        radio_group = findViewById(R.id.radiogroupUpdating);
+//        rad_available = findViewById(R.id.radio_availableUpdating);
+//        rad_unavailable = findViewById(R.id.radio_unavailableUpdating);
+
+        avail = findViewById(R.id.checkbox_availableOnUpdating);
+        unavail = findViewById(R.id.checkbox_unavailableOnUpdating);
+        unavail.setEnabled(true);
 
         sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
         index = sharedPref.getInt("key2", 0);
@@ -79,12 +89,14 @@ public class UpdatingActivity extends AppCompatActivity {
         new Thread(new Runnable() {
             public void run() {
                 try {
-                    ResultSet rs = connectivity.getResultSet(getBookViewingQuery(index));
-                    populateViews(index, rs);
+                    rs = connectivity.getResultSet(getBookViewingQuery(index));
+                    populateViews(rs);
                     progressDialog.cancel();
 
-                    runOnUiThread(new Runnable() {
-                        public void run() {
+                    runOnUiThread(new Runnable()
+                    {
+                        public void run()
+                        {
 
                             String title = book.getTitle();
                             etTitle.setText(title);
@@ -97,28 +109,44 @@ public class UpdatingActivity extends AppCompatActivity {
                             String pic = book.getPicture();
                             imagebox.setImageBitmap(decodeToBase64(pic));
 
-                            if ("Unavailable".equalsIgnoreCase(book.getStatus())) {
-                                rad_unavailable.setSelected(true);
-                                rad_available.setSelected(false);
-                            } else {
-                                rad_unavailable.setSelected(false);
-                                rad_available.setSelected(true);
+//                            if ("Unavailable".equalsIgnoreCase(book.getStatus())) {
+//                                rad_unavailable.setSelected(true);
+//                                rad_available.setSelected(false);
+//                            } else {
+//                                rad_unavailable.setSelected(false);
+//                                rad_available.setSelected(true);
+//                            }
+//
+//                            rad_available.setOnClickListener(new View.OnClickListener() {
+//                                @Override
+//                                public void onClick(View v) {
+//                                    onRadioButtonClicked(v);
+//                                }
+//                            });
+//
+//                            rad_unavailable.setOnClickListener(new View.OnClickListener() {
+//                                @Override
+//                                public void onClick(View v) {
+//                                    onRadioButtonClicked(v);
+//                                }
+//                            });
+                            if("Available".equalsIgnoreCase(book.getStatus()))
+                            {
+                                avail.setChecked(true);
+                                unavail.setChecked(false);
+                            }
+                            else
+                            {
+                                unavail.setChecked(true);
+                                avail.setChecked(false);
                             }
 
-                            rad_available.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    onRadioButtonClicked(v);
-                                }
-                            });
+                            addListenerOnChkIos();
 
-                            rad_unavailable.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    onRadioButtonClicked(v);
-                                }
-                            });
+
                         }
+
+
                     });
                 } catch (final Exception e) {
                     progressDialog.cancel();
@@ -133,20 +161,58 @@ public class UpdatingActivity extends AppCompatActivity {
 
     }
 
-    public void onRadioButtonClicked(View view) {
+    public void addListenerOnChkIos()
+    {
+        avail.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v) {
 
-        // Check which radio button was clicked
-        switch (view.getId()) {
-            case R.id.radio_availableUpdating:
-                status = "Available";
-                break;
-            case R.id.radio_unavailableUpdating:
-                status = "Unavailable";
-                break;
+                //is chkIos checked?
+                if (((CheckBox) v).isChecked())
+                {
+                    status="Available";
+
+                }
+            }
+        });
+        unavail.setOnClickListener(new View.OnClickListener()
+        {
+             @Override
+             public void onClick(View v) {
+
+                 //is chkIos checked?
+                 if (((CheckBox) v).isChecked()) {
+                     status = "Unavailable";
+
+                 }
+             }
+        });
+        try {
+            rs = connectivity.getResultSet(setStatusUpdatingQuery(index, status));
+            populateViews(rs);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
-
     }
+
+
+
+
+
+//    public void onRadioButtonClicked(View view) {
+//        // Check which radio button was clicked
+//        switch (view.getId()) {
+//            case R.id.radio_availableUpdating:
+//                status = "Available";
+//                break;
+//            case R.id.radio_unavailableUpdating:
+//                status = "Unavailable";
+//                break;
+//        }
+//    }
 
     private void createUpdateButton(Button btnUpdate, final EditText etTitle,
                                     final EditText etAuthor, final EditText etSummary, final EditText etPrice) {
@@ -180,7 +246,7 @@ public class UpdatingActivity extends AppCompatActivity {
         });
     }
 
-    private void populateViews(int index, ResultSet rs) throws Exception {
+    private void populateViews(ResultSet rs) throws Exception {
         rs.next();
 
         book = new Book(rs.getInt(1), rs.getString(2), rs.getString(3),
