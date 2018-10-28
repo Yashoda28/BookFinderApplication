@@ -69,8 +69,10 @@ public class Viewing2Activity extends AppCompatActivity {
         createViewMapButton(btnBack);
         btnInterested = findViewById(R.id.btnInterestedOnViewing2);
         createViewInterested(btnInterested);
-        Button btnBackViewHistory = findViewById(R.id.btnBackToHistoryOnViewing2);
-        createBackViewHistory(btnBackViewHistory);
+
+//        Button btnBackViewHistory = findViewById(R.id.btnBackToHistoryOnViewing2);
+//        createBackViewHistory(btnBackViewHistory);
+
         Button btnViewAllBooks = findViewById(R.id.btnBackToBooksViewing2);
         createViewAllBooks(btnViewAllBooks);
 
@@ -274,14 +276,15 @@ public class Viewing2Activity extends AppCompatActivity {
         });
     }
 
-    private void createBackViewHistory(Button btnBackViewHistory)
-    {
-        btnBackViewHistory.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(context, ViewHistoryActivity.class));
-                finish();
-            }
-        });
-    }
+//    private void createBackViewHistory(Button btnBackViewHistory)
+//    {
+//        btnBackViewHistory.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(context, ViewHistoryActivity.class));
+//                finish();
+//            }
+//        });
+//    }
+
 }

@@ -46,6 +46,7 @@ public class ViewingActivity extends AppCompatActivity {
     SharedPreferences sharedPref;
     SharedPreferences.Editor editor;
 
+    ResultSet rs;
 
     ArrayList<Book> details = new ArrayList<>();
 
@@ -90,7 +91,7 @@ public class ViewingActivity extends AppCompatActivity {
             public void run() {
                 try {
 
-                    ResultSet rs = connectivity.getResultSet(getBookViewingQuery());
+                    rs = connectivity.getResultSet(getBookViewingQuery());
                     populateViews(rs);
 
                     progressDialog.cancel();
@@ -122,8 +123,16 @@ public class ViewingActivity extends AppCompatActivity {
                 new Thread(new Runnable() {
                     public void run() {
                         try {
-                            ResultSet rs = connectivity.getResultSet(getSearchQuery(title));
-                            populateViews(rs);
+                            if(!(title.isEmpty()))
+                            {
+                                rs = connectivity.getResultSet(getSearchQuery(title));
+                                populateViews(rs);
+                            }
+                            else
+                            {
+                                rs = connectivity.getResultSet(getBookViewingQuery());
+                                populateViews(rs);
+                            }
                             runOnUiThread(new Runnable() {
                                 public void run() {
                                     CustomAdapter lAdapt = new CustomAdapter();
@@ -247,10 +256,7 @@ public class ViewingActivity extends AppCompatActivity {
                 dImg.setImageBitmap(decodebitmap);
                 //errorMsg.setText(msg + " not empty");
                 dImg.invalidate();
-
             }
-
-
             return view;
         }
     }
