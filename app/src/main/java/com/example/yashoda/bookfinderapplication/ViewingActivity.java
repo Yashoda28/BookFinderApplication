@@ -152,6 +152,7 @@ public class ViewingActivity extends AppCompatActivity {
 
         bookDetails2.clear();
         pictureImage.clear();
+        details.clear();
         int i = 0;
         while (rs.next()) {
             String Imagetext = rs.getString(8);
